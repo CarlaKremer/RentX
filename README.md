@@ -6,7 +6,7 @@ Card rental app developed as a part of Rocketseat ignite course to better unders
 - Expo
 - Styled Components
 - [React Native Calendars](https://github.com/wix/react-native-calendars)
-- [React Nativitgation](https://reactnavigation.org/)
+- [React Navigation](https://reactnavigation.org/)
 
 ## What I've learned
 - [React Native Calendars](https://github.com/wix/react-native-calendars)
