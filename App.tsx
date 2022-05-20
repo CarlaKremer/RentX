@@ -20,6 +20,8 @@ import {
 import themes from './src/styles/themes';
 import { CarDetails } from './src/screens/CarDetails';
 import { Schedulling } from './src/screens/Schedulling';
+import { SchedullingDetails } from './src/screens/SchedullingDetails';
+import { SchedullingComplete } from './src/screens/SchedullingComplete';
 
 export default function App() {
   const [fontsLoaded] = useFonts(
@@ -37,7 +39,7 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={themes}>
-      <Schedulling/>
+      <SchedullingComplete/>
     </ThemeProvider>
   );
 }
