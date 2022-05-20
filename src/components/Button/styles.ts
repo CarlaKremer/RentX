@@ -6,14 +6,14 @@ interface ButtonProps extends RectButtonProps{
     color: string
 }
 
-export const Container = styled(RectButton)`
+export const Container = styled(RectButton)<ButtonProps>`
   width: 100%;
   height: 56px;
 
   padding: 18px;
   align-items: center;
   justify-content: center;
-  background-color: ${({theme, color})=> color ? color : theme.colors.main};
+  background-color: ${({color})=> color };
 
 `;
 

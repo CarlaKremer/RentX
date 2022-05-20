@@ -18,9 +18,18 @@ import {
 } from './styles';
 import { Button } from '../../components/Button';
 import { Calendar } from '../../components/Calendar';
+import { useNavigation } from '@react-navigation/native';
 
 export function Schedulling() {
+    const navigation = useNavigation();
     const theme = useTheme();
+
+    function handleGoBack() {
+      navigation.goBack()
+    }
+    function handleSchedulling() {
+      navigation.navigate('SchedullingDetails')
+    }
 return (
   <Container>
     <StatusBar
@@ -30,7 +39,7 @@ return (
     />
         <Header>
           <BackButton 
-              onPress={()=> {}}
+              onPress={handleGoBack}
               color={theme.colors.shape}
             />
           <Title>
@@ -61,7 +70,7 @@ return (
         <Footer>
           <Button 
             title='Confirmar'
-            onPress={()=>{}}
+            onPress={handleSchedulling}
           />
         </Footer>
   </Container>

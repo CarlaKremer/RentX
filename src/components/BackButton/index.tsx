@@ -8,7 +8,8 @@ import {
 import themes from '../../styles/themes';
 
 interface Props extends BorderlessButtonProps {
-    color? :string
+    color? :string;
+    onPress: ()=> void
 }
 
 export function BackButton({color, ...rest}:Props) {

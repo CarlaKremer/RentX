@@ -27,12 +27,29 @@ import {
   Footer
 } from './styles';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 export function CarDetails() {
+  const navigation = useNavigation();
+
+function handleGoBack() {
+  navigation.goBack()
+}
+
+function handleSchedulling() {
+  navigation.navigate('Schedulling')
+}
+
 return (
   <Container>
+    <StatusBar
+      barStyle="dark-content"
+      translucent
+      backgroundColor="transparent"
+    />
       <Header>
-          <BackButton onPress={()=> {}}/>
+          <BackButton onPress={handleGoBack}/>
       </Header>
       <CarImages>
         <ImageSlider
@@ -62,18 +79,12 @@ return (
         <About>
           Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
         </About>
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-        </About>
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-        </About>
       </Content>
 
       <Footer>
         <Button
           title='Escolher período do aluguel'
-          onPress={()=>{}}
+          onPress={handleSchedulling}
         />
       </Footer>
 

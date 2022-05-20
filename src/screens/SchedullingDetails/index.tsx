@@ -41,12 +41,27 @@ import { Button } from '../../components/Button';
 import { Calendar } from '../../components/Calendar';
 import { RFValue } from 'react-native-responsive-fontsize';
 import themes from '../../styles/themes';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 export function SchedullingDetails() {
+  const navigation = useNavigation();
+  function handleGoBack() {
+    navigation.goBack()
+  }
+  function handleSchedullingComplete() {
+    navigation.navigate('SchedullingComplete')
+  }
 return (
   <Container>
+      <StatusBar 
+        barStyle="dark-content"
+        translucent
+        backgroundColor='transparent'
+      />
       <Header>
-          <BackButton onPress={()=> {}}/>
+        
+          <BackButton onPress={handleGoBack}/>
       </Header>
       <CarImages>
         <ImageSlider
@@ -113,8 +128,9 @@ return (
 
       <Footer>
         <Button
-          title='Escolher período do aluguel'
-          onPress={()=>{}}
+          title='Alugar agora'
+          onPress={handleSchedullingComplete}
+          color= {themes.colors.success}
         />
       </Footer>
 
