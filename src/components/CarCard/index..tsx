@@ -39,7 +39,7 @@ return (
 
           <About>
                 <Rent>
-                    <Period>${data.rent.period}</Period>
+                    <Period>{data.rent.period}</Period>
                     <Price>{`R$ ${data.rent.price}`}</Price>
                 </Rent>
 
