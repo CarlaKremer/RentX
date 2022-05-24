@@ -1,14 +1,13 @@
 import React from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
+
 import { Acessory } from '../../components/Acessory';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
-
-import speedSVG from '../../assets/speed.svg'
-import accelerationSVG from '../../assets/acceleration.svg'
-import forceSVG from '../../assets/force.svg'
-import gasolineSVG from '../../assets/gasoline.svg'
-import exchangeVG from '../../assets/exchange.svg'
-import peopleSVG from '../../assets/people2.svg'
+import { Button } from '../../components/Button';
+import { CarDTO } from '../../dtos/CarDTO';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import {
   Container,
@@ -23,23 +22,27 @@ import {
   Period,
   Price,
   About,
-  Acessories,
+  Accessories,
   Footer
 } from './styles';
-import { Button } from '../../components/Button';
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'react-native';
+
+
+interface CarDTOParams {
+  car: CarDTO
+}
 
 export function CarDetails() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const { car } = route.params as CarDTOParams;
 
-function handleGoBack() {
-  navigation.goBack()
-}
+  function handleGoBack() {
+    navigation.goBack()
+  }
 
-function handleSchedulling() {
-  navigation.navigate('Schedulling')
-}
+  function handleSchedulling() {
+    navigation.navigate('Schedulling')
+  }
 
 return (
   <Container>
@@ -60,24 +63,26 @@ return (
       <Content>
         <Details>
           <Description>
-            <Brand>Lamborghini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
           <Rent>
             <Period>Ao dia</Period>
             <Price>R$ 360</Price>
           </Rent>
         </Details>
-        <Acessories>
-          <Acessory name="380km/h" icon={speedSVG}/>
-          <Acessory name="3.2seg" icon={accelerationSVG}/>
-          <Acessory name="800HP" icon={forceSVG}/>
-          <Acessory name="gasolina" icon={gasolineSVG}/>
-          <Acessory name="exchange" icon={exchangeVG}/>
-          <Acessory name="2 pessoas" icon={peopleSVG} />
-        </Acessories>
+        <Accessories>
+          {
+            car.accessories.map(accessory =>(
+              <Acessory 
+                key={accessory.type}
+                name={accessory.name}
+                icon={getAccessoryIcon(accessory.type)}/>
+            ))
+          }
+        </Accessories>
         <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
+         {car.about}
         </About>
       </Content>
 
