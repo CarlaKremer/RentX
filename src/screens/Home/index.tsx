@@ -7,6 +7,7 @@ import { api } from '../../services/api';
 import { CarCard } from '../../components/CarCard/index.';
 import { CarDTO } from '../../dtos/CarDTO';
 import { Load } from '../../components/Load';
+import { Ionicons } from '@expo/vector-icons'
 
 import Logo from '../../assets/logo.svg'
 import {
@@ -15,18 +16,24 @@ import {
   TotalCars,
   HeaderContent,
   CarList,
+  MyButtonList
 } from './styles';
+import { useTheme } from 'styled-components';
 
 
 export function Home(){
   const navigation = useNavigation();
   const [cars, setCars] = useState<CarDTO[]>([])
   const [loadingData, setLoadingData] = useState(true)
-  
+  const theme = useTheme();
 
 
   function handleCarDetails(car : CarDTO) {
     navigation.navigate('CarDetails', { car })
+  }
+
+  function handleOpenMyCars() {
+    navigation.navigate('MyCars')
   }
 
 useEffect(() => {
@@ -61,18 +68,24 @@ return (
     </HeaderContent>
     </Header>
     { loadingData ? <Load /> : 
-    <CarList
-      data={cars}
-      keyExtractor={item => item.id}
-      renderItem={({item})=> 
-        <CarCard 
-          data={item}  
-          onPress={() => (handleCarDetails(item))}
-        />
-        
+      <CarList
+        data={cars}
+        keyExtractor={item => item.id}
+        renderItem={({item})=> 
+          <CarCard 
+            data={item}  
+            onPress={() => (handleCarDetails(item))}
+          />
       }
     />
   }
+    <MyButtonList onPress={handleOpenMyCars}>
+      <Ionicons 
+        name="ios-car-sport"
+        size={32}
+        color={theme.colors.shape}
+        />
+    </MyButtonList>
   </Container>
 );
 }

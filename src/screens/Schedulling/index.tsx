@@ -43,8 +43,9 @@ export function Schedulling() {
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
   const route = useRoute();
   const { car } = route.params as CarDTOParams;
-    const navigation = useNavigation();
-    const theme = useTheme();
+  const navigation = useNavigation();
+  const theme = useTheme();
+  
 
     function handleGoBack() {
       navigation.goBack()
