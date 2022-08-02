@@ -24,6 +24,8 @@ import {
   CarFooterDate
 } from './styles';
 import { CarCard } from '../../components/CarCard/index.';
+import { Load } from '../../components/Load';
+
 
 interface CarProps{
     user_id: string;
@@ -79,7 +81,7 @@ return (
             Conforto, segurança e praticidade.
         </Subtitle>
         </Header>
-
+        {loading ? <Load/> :
         <Content>
 
             <Appointments>
@@ -111,6 +113,7 @@ return (
                 )}
             />
         </Content>
+        }
   </Container>
 );
 }
